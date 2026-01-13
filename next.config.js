@@ -2,10 +2,10 @@
 const nextConfig = {
   output: "export",
   images: {
-    unoptimized: true
+    unoptimized: true,
   },
-  basePath: "/Pagina-est-tica-calculadora-IPA",
-  assetPrefix: "/Pagina-est-tica-calculadora-IPA/"
+  basePath: "/my-v0-project",
+  assetPrefix: "/my-v0-project/",
 };
 
 module.exports = nextConfig;
