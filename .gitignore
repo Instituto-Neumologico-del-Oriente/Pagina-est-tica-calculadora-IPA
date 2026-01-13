@@ -1,0 +1,10 @@
+# Dependencias
+node_modules/
+.pnpm-store/
+
+# Next.js
+.next/
+
+# Logs
+npm-debug.log*
+pnpm-debug.log*

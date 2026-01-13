@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Paquetes-Año</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#3b82f6',
+                        'primary-dark': '#2563eb',
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="min-h-screen bg-gradient-to-br from-slate-50 via-white to-slate-100">
+    <div class="container mx-auto px-4 py-12 max-w-4xl">
+        <!-- Header -->
+        <div class="text-center mb-12">
+            <div class="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-blue-100 mb-4">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 text-blue-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="4" y="2" width="16" height="20" rx="2"/>
+                    <line x1="8" y1="6" x2="16" y2="6"/>
+                    <line x1="8" y1="10" x2="16" y2="10"/>
+                    <line x1="8" y1="14" x2="16" y2="14"/>
+                    <line x1="8" y1="18" x2="10" y2="18"/>
+                </svg>
+            </div>
+            <h1 class="text-4xl md:text-5xl font-bold text-balance mb-4 text-slate-900">Calculadora de Paquetes-Año</h1>
+            <p class="text-lg text-slate-600 max-w-2xl mx-auto text-pretty">
+                Herramienta médica para calcular la exposición acumulada al tabaco
+            </p>
+        </div>
+
+        <!-- Main Calculator Card -->
+        <div class="bg-white rounded-xl shadow-lg border-2 border-slate-200 overflow-hidden">
+            <div class="p-6 space-y-2 border-b border-slate-200">
+                <h2 class="text-2xl font-semibold flex items-center gap-2 text-slate-900">
+                    <svg xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 640 640"
+                        width="24"
+                        height="24"
+                        fill="currentColor">
+                    <path d="M392 64C405.3 64 416 74.7 416 88L416 107C416 147.3 432 186 460.5 214.5L481.5 235.5C501 255 512 281.4 512 309L512 328C512 341.3 501.3 352 488 352C474.7 352 464 341.3 464 328L464 309C464 294.1 458.1 279.9 447.6 269.4L426.6 248.4C389.1 210.9 368 160 368 107L368 88C368 74.7 378.7 64 392 64zM584 352C570.7 352 560 341.3 560 328L560 309C560 268.7 544 230 515.5 201.5L494.5 180.5C475 161 464 134.6 464 107L464 88C464 74.7 474.7 64 488 64C501.3 64 512 74.7 512 88L512 107C512 121.9 517.9 136.1 528.4 146.6L549.4 167.6C586.9 205.1 608 256 608 309L608 328C608 341.3 597.3 352 584 352zM352 512L448 512L448 480L352 480L352 512zM32 480C32 444.7 60.7 416 96 416L480 416C497.7 416 512 430.3 512 448L512 544C512 561.7 497.7 576 480 576L96 576C60.7 576 32 547.3 32 512L32 480zM608 440L608 552C608 565.3 597.3 576 584 576C570.7 576 560 565.3 560 552L560 440C560 426.7 570.7 416 584 416C597.3 416 608 426.7 608 440z"/>
+                    </svg>
+                    Ingrese sus datos
+                </h2>
+                <p class="text-sm text-slate-600">Complete los campos para calcular sus paquetes-año</p>
+            </div>
+            <div class="p-6 space-y-6">
+                <!-- Input Fields -->
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div class="space-y-2">
+                        <label for="cigarettes" class="block text-base font-medium text-slate-900">
+                            Cigarrillos por día
+                        </label>
+                        <input
+                            id="cigarettes"
+                            type="number"
+                            min="0"
+                            step="1"
+                            placeholder="20"
+                            class="w-full text-lg h-12 px-4 rounded-lg border-2 border-slate-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none transition-all"
+                            oninput="calculatePackYears()"
+                        />
+                    </div>
+
+                    <div class="space-y-2">
+                        <label for="years" class="block text-base font-medium text-slate-900">
+                            Años fumando
+                        </label>
+                        <input
+                            id="years"
+                            type="number"
+                            min="0"
+                            step="0.5"
+                            placeholder="10"
+                            class="w-full text-lg h-12 px-4 rounded-lg border-2 border-slate-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none transition-all"
+                            oninput="calculatePackYears()"
+                        />
+                    </div>
+                </div>
+
+                <!-- Result Display -->
+                <div id="result" class="hidden mt-8 p-6 rounded-xl bg-blue-50 border-2 border-blue-200">
+                    <div class="text-center space-y-4">
+                        <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-blue-100">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 text-blue-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="4" y="2" width="16" height="20" rx="2"/>
+                                <line x1="8" y1="6" x2="16" y2="6"/>
+                                <line x1="8" y1="10" x2="16" y2="10"/>
+                                <line x1="8" y1="14" x2="16" y2="14"/>
+                            </svg>
+                        </div>
+                        <div>
+                            <p class="text-sm text-slate-600 mb-2">Su resultado</p>
+                            <p id="resultValue" class="text-5xl md:text-6xl font-bold text-blue-600">0</p>
+                            <p class="text-lg text-slate-600 mt-2">paquetes-año</p>
+                        </div>
+
+                        <!-- Risk Level -->
+                        <div class="pt-4 border-t border-blue-200">
+                            <p class="text-sm text-slate-600 mb-2">Nivel de riesgo</p>
+                            <p id="riskLevel" class="text-2xl font-bold">-</p>
+                            <p id="riskDescription" class="text-sm text-slate-600 mt-3 max-w-md mx-auto text-pretty">
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Information Section -->
+        <div class="mt-8 grid md:grid-cols-2 gap-6">
+            <div class="bg-white rounded-xl shadow-md border border-slate-200 overflow-hidden">
+                <div class="p-6 border-b border-slate-200">
+                    <h3 class="text-lg font-semibold flex items-center gap-2 text-slate-900">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"/>
+                            <line x1="12" y1="16" x2="12" y2="12"/>
+                            <line x1="12" y1="8" x2="12.01" y2="8"/>
+                        </svg>
+                        ¿Qué son los paquetes-año?
+                    </h3>
+                </div>
+                <div class="p-6 text-sm text-slate-600 space-y-3">
+                    <p>
+                        Los paquetes-año son una medida médica estándar que cuantifica la exposición acumulada al tabaco a lo
+                        largo del tiempo.
+                    </p>
+                    <p>
+                        <strong class="text-slate-900">Fórmula:</strong> (Cigarrillos por día ÷ 20) × Años fumados
+                    </p>
+                    <p>
+                        Un paquete estándar contiene 20 cigarrillos. Esta medida ayuda a los profesionales de la salud a evaluar
+                        el riesgo de enfermedades relacionadas con el tabaco.
+                    </p>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-xl shadow-md border border-slate-200 overflow-hidden">
+                <div class="p-6 border-b border-slate-200">
+                    <h3 class="text-lg font-semibold flex items-center gap-2 text-slate-900">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"/>
+                            <line x1="12" y1="8" x2="12" y2="12"/>
+                            <line x1="12" y1="16" x2="12.01" y2="16"/>
+                        </svg>
+                        Importancia clínica
+                    </h3>
+                </div>
+                <div class="p-6 text-sm text-slate-600 space-y-3">
+                    <p>Los paquetes-año se utilizan para:</p>
+                    <ul class="list-disc list-inside space-y-2 ml-2">
+                        <li>Evaluar el riesgo de cáncer de pulmón</li>
+                        <li>Determinar la necesidad de pruebas de detección</li>
+                        <li>Calcular el riesgo de EPOC</li>
+                        <li>Planificar estrategias de cesación tabáquica</li>
+                    </ul>
+                    <p class="pt-2 text-xs italic">
+                        Nota: Esta calculadora es solo para fines educativos. Consulte a un profesional de la salud para una
+                        evaluación médica completa.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer Alert -->
+        <div class="mt-8 p-4 rounded-lg bg-amber-50 border border-amber-200 flex gap-3">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-amber-600 flex-shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"/>
+                <line x1="12" y1="8" x2="12" y2="12"/>
+                <line x1="12" y1="16" x2="12.01" y2="16"/>
+            </svg>
+            <div class="text-sm text-amber-900">
+                <strong>Aviso importante:</strong> Esta herramienta es solo para fines informativos y educativos. No
+                sustituye el consejo médico profesional. Si tiene preocupaciones sobre su salud relacionadas con el
+                tabaquismo, consulte con su médico.
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function calculatePackYears() {
+            const cigarettes = parseFloat(document.getElementById('cigarettes').value);
+            const years = parseFloat(document.getElementById('years').value);
+            const resultDiv = document.getElementById('result');
+            
+            if (!isNaN(cigarettes) && !isNaN(years) && cigarettes >= 0 && years >= 0) {
+                // Formula: (cigarrillos por día / 20) × años fumados
+                const packYears = Math.round((cigarettes / 20) * years * 10) / 10;
+                
+                document.getElementById('resultValue').textContent = packYears;
+                resultDiv.classList.remove('hidden');
+                
+                // Determinar nivel de riesgo
+                const riskLevelEl = document.getElementById('riskLevel');
+                const riskDescEl = document.getElementById('riskDescription');
+                
+                if (packYears < 10) {
+                    riskLevelEl.textContent = 'Bajo';
+                    riskLevelEl.className = 'text-2xl font-bold text-emerald-600';
+                    riskDescEl.textContent = 'Riesgo relativamente bajo de enfermedades relacionadas con el tabaco.';
+                } else if (packYears < 20) {
+                    riskLevelEl.textContent = 'Moderado';
+                    riskLevelEl.className = 'text-2xl font-bold text-amber-600';
+                    riskDescEl.textContent = 'Riesgo moderado. Se recomienda dejar de fumar y realizar chequeos regulares.';
+                } else if (packYears < 30) {
+                    riskLevelEl.textContent = 'Alto';
+                    riskLevelEl.className = 'text-2xl font-bold text-orange-600';
+                    riskDescEl.textContent = 'Riesgo alto. Consulte con su médico sobre programas para dejar de fumar.';
+                } else {
+                    riskLevelEl.textContent = 'Muy Alto';
+                    riskLevelEl.className = 'text-2xl font-bold text-rose-600';
+                    riskDescEl.textContent = 'Riesgo muy alto. Se recomienda atención médica y evaluación de detección de cáncer de pulmón.';
+                }
+            } else {
+                resultDiv.classList.add('hidden');
+            }
+        }
+    </script>
+</body>
+</html>
