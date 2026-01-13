@@ -1,0 +1,66 @@
+/* Estilos personalizados adicionales */
+
+/* Animaciones suaves para inputs */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+    opacity: 1;
+}
+
+/* Transiciones suaves */
+#result {
+    transition: all 0.3s ease-in-out;
+}
+
+/* Efecto hover en tarjetas */
+.bg-white {
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.bg-white:hover {
+    transform: translateY(-2px);
+}
+
+/* Animación de aparición para el resultado */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+#result:not(.hidden) {
+    animation: fadeIn 0.4s ease-out;
+}
+
+/* Estilos para navegadores específicos */
+@supports (-webkit-backdrop-filter: none) or (backdrop-filter: none) {
+    .bg-white {
+        backdrop-filter: blur(10px);
+    }
+}
+
+/* Mejoras de accesibilidad */
+input:focus {
+    outline: none;
+}
+
+button:focus-visible,
+input:focus-visible {
+    outline: 2px solid #3b82f6;
+    outline-offset: 2px;
+}
+
+/* Estilos para impresión */
+@media print {
+    body {
+        background: white;
+    }
+    
+    .bg-gradient-to-br {
+        background: white;
+    }
+}
