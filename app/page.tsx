@@ -90,7 +90,7 @@ export default function PackYearCalculator() {
                   step="1"
                   placeholder="20"
                   value={cigarettesPerDay}
-                  onChange={(e) => {
+                  onChange= {(e) => {
                     setCigarettesPerDay(e.target.value)
                     calculatePackYears()
                   }}
