@@ -1,5 +1,176 @@
 /* Estilos personalizados adicionales */
 
+/* Fondo con círculos decorativos al estilo médico */
+body {
+    position: relative;
+    overflow-x: hidden;
+}
+
+/* Círculos decorativos de fondo */
+body::before {
+    content: '';
+    position: fixed;
+    top: -5%;
+    right: 5%;
+    width: 120px;
+    height: 120px;
+    background: rgba(59, 130, 246, 0.15);
+    border-radius: 50%;
+    z-index: 0;
+    pointer-events: none;
+}
+
+body::after {
+    content: '';
+    position: fixed;
+    bottom: 10%;
+    left: 8%;
+    width: 180px;
+    height: 180px;
+    background: rgba(59, 130, 246, 0.12);
+    border-radius: 50%;
+    z-index: 0;
+    pointer-events: none;
+}
+
+/* Contenedor principal con posición relativa */
+.container {
+    position: relative;
+    z-index: 1;
+}
+
+/* Círculos adicionales en el contenedor */
+.container::before {
+    content: '';
+    position: absolute;
+    top: 5%;
+    left: 2%;
+    width: 100px;
+    height: 100px;
+    background: rgba(14, 165, 233, 0.1);
+    border-radius: 50%;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.container::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: 3%;
+    width: 200px;
+    height: 200px;
+    background: rgba(96, 165, 250, 0.08);
+    border-radius: 50%;
+    z-index: 0;
+    pointer-events: none;
+}
+
+/* Círculos decorativos variados */
+.bg-white:first-child::before {
+    content: '';
+    position: fixed;
+    top: 15%;
+    left: 10%;
+    width: 60px;
+    height: 60px;
+    background: rgba(59, 130, 246, 0.2);
+    border-radius: 50%;
+    z-index: 0;
+    pointer-events: none;
+}
+
+/* Patrón de puntos decorativos */
+.dot-pattern {
+    position: fixed;
+    width: 80px;
+    height: 120px;
+    background-image: radial-gradient(circle, rgba(59, 130, 246, 0.25) 2px, transparent 2px);
+    background-size: 12px 12px;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.dot-pattern-1 {
+    top: 20%;
+    right: 8%;
+}
+
+.dot-pattern-2 {
+    bottom: 25%;
+    left: 5%;
+}
+
+.dot-pattern-3 {
+    top: 60%;
+    right: 15%;
+}
+
+/* Círculo mediano superior derecha */
+.circle-decoration-1 {
+    position: fixed;
+    top: 8%;
+    right: 12%;
+    width: 140px;
+    height: 140px;
+    background: rgba(59, 130, 246, 0.12);
+    border-radius: 50%;
+    z-index: 0;
+    pointer-events: none;
+}
+
+/* Círculo pequeño superior derecha */
+.circle-decoration-2 {
+    position: fixed;
+    top: 3%;
+    right: 20%;
+    width: 70px;
+    height: 70px;
+    background: rgba(14, 165, 233, 0.18);
+    border-radius: 50%;
+    z-index: 0;
+    pointer-events: none;
+}
+
+/* Círculo grande inferior derecha */
+.circle-decoration-3 {
+    position: fixed;
+    bottom: 5%;
+    right: 8%;
+    width: 220px;
+    height: 220px;
+    background: rgba(59, 130, 246, 0.08);
+    border-radius: 50%;
+    z-index: 0;
+    pointer-events: none;
+}
+
+/* Círculo pequeño izquierda */
+.circle-decoration-4 {
+    position: fixed;
+    top: 35%;
+    left: 3%;
+    width: 50px;
+    height: 50px;
+    background: rgba(14, 165, 233, 0.22);
+    border-radius: 50%;
+    z-index: 0;
+    pointer-events: none;
+}
+
+/* Círculo mediano inferior izquierda */
+.circle-decoration-5 {
+    position: fixed;
+    bottom: 20%;
+    left: 10%;
+    width: 90px;
+    height: 90px;
+    background: rgba(96, 165, 250, 0.15);
+    border-radius: 50%;
+    z-index: 0;
+    pointer-events: none;
+}
+
 /* Animaciones suaves para inputs */
 input[type="number"]::-webkit-inner-spin-button,
 input[type="number"]::-webkit-outer-spin-button {
