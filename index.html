@@ -6,7 +6,7 @@
     <title>Calculadora de Paquetes-Año</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="tailwind.config.js"></script>
-    <link rel="stylesheet" href="./sources/styles.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body class="min-h-screen bg-gradient-to-br from-cyan-50 via-blue-50 to-white relative">
     <!-- Círculos decorativos -->
@@ -117,6 +117,66 @@
             </div>
         </div>
 
+        <!-- INO Program Alert - Shown when IPA >= 20 -->
+        <div id="inoAlert" class="hidden mt-8 bg-gradient-to-r from-rose-50 to-orange-50 rounded-xl shadow-lg border-2 border-rose-200 overflow-hidden">
+            <div class="p-6 md:p-8">
+                <div class="flex flex-col md:flex-row gap-6">
+                    <div class="flex-shrink-0">
+                        <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-rose-100">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 text-rose-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/>
+                                <line x1="12" y1="9" x2="12" y2="13"/>
+                                <line x1="12" y1="17" x2="12.01" y2="17"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="flex-1 space-y-4">
+                        <h3 class="text-2xl font-bold text-rose-900">
+                            ¡Importante para su salud!
+                        </h3>
+                        <p class="text-base text-slate-700 leading-relaxed">
+                            Si su IPA es <strong>≥ 20</strong>, tiene entre <strong>50 y 80 años</strong>, y fuma actualmente o dejó de fumar en los últimos 15 años, le recomendamos comunicarse y preguntar por el <strong>Programa de Tamizaje de Cáncer de Pulmón del Instituto Neumológico del Oriente (INO)</strong>.
+                        </p>
+                        <p class="text-base text-slate-700 leading-relaxed">
+                            Nuestro equipo le brindará orientación personalizada y le explicará si cumple los criterios para ingresar al programa.
+                        </p>
+                        <div class="pt-4 border-t border-rose-200">
+                            <p class="text-sm text-slate-600 italic">
+                                <strong>Recuerde:</strong> dejar de fumar siempre reduce el riesgo de cáncer de pulmón, sin importar cuántos años haya fumado. Si necesita ayuda para dejar el tabaco, también podemos orientarlo.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Why IPA is Important Section -->
+        <div class="mt-8 bg-white rounded-xl shadow-lg border-2 border-slate-200 overflow-hidden">
+            <div class="p-6 border-b border-slate-200">
+                <h3 class="text-xl font-semibold flex items-center gap-2 text-slate-900">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-blue-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10"/>
+                        <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/>
+                        <line x1="12" y1="17" x2="12.01" y2="17"/>
+                    </svg>
+                    ¿Por qué es importante conocer su IPA?
+                </h3>
+            </div>
+            <div class="p-6 space-y-4">
+                <p class="text-base text-slate-700 leading-relaxed">
+                    El consumo de tabaco es la principal causa de cáncer de pulmón y se estima que es responsable del <strong>80–85 % de los casos</strong>. El riesgo aumenta con el número de cigarrillos fumados al día y con los años de consumo. Por esta razón, la exposición al tabaco se mide en <strong>Índice Paquete-Año (IPA)</strong>, que corresponde al número de paquetes de cigarrillos fumados por día multiplicado por los años que ha fumado.
+                </p>
+                <p class="text-base text-slate-700 leading-relaxed">
+                    Si su IPA es <strong>≥ 20</strong>, tiene entre <strong>50 y 80 años</strong>, y fuma actualmente o dejó de fumar en los últimos 15 años, le recomendamos comunicarse y preguntar por el <strong>Programa de Tamizaje de Cáncer de Pulmón del Instituto Neumológico del Oriente (INO)</strong>. Nuestro equipo le brindará orientación personalizada y le explicará si cumple los criterios para ingresar al programa.
+                </p>
+                <div class="mt-4 p-4 bg-emerald-50 rounded-lg border border-emerald-200">
+                    <p class="text-sm text-emerald-900">
+                        <strong>Recuerde:</strong> dejar de fumar siempre reduce el riesgo de cáncer de pulmón, sin importar cuántos años haya fumado. Si necesita ayuda para dejar el tabaco, también podemos orientarlo.
+                    </p>
+                </div>
+            </div>
+        </div>
+
         <!-- Information Section -->
         <div class="mt-8 grid md:grid-cols-2 gap-6">
             <div class="bg-white rounded-xl shadow-md border border-slate-200 overflow-hidden">
@@ -134,9 +194,6 @@
                     <p>
                         Los paquetes-año son una medida médica estándar que cuantifica la exposición acumulada al tabaco a lo
                         largo del tiempo.
-                    </p>
-                    <p>
-                        <strong class="text-slate-900">Fórmula:</strong> (Cigarrillos por día ÷ 20) × Años fumados
                     </p>
                     <p>
                         Un paquete estándar contiene 20 cigarrillos. Esta medida ayuda a los profesionales de la salud a evaluar
